@@ -8,7 +8,7 @@ function Import() {
     return (
         <>
             <form>
-                <h3>Importer un fichier CSV</h3>
+                <h3>Importer un fichier JSON</h3>
                 <input
                     type="file"
                     onChange={handleFileChange}
