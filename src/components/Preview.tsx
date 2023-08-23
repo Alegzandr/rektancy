@@ -53,7 +53,7 @@ function Preview() {
             data: item.data.Runs[0].CaptureData.MsBetweenPresents.map(
                 (currentMs: any) => 1000 / currentMs
             ),
-            borderColor: 'rgba(75,192,192,1)',
+            borderColor: item.color,
             fill: false,
         })),
     };

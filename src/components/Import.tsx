@@ -2,8 +2,14 @@ import { useContext } from 'react';
 import FilesContext from '../contexts/FilesContext';
 
 function Import() {
-    const { files, error, handleFileChange, handleFileRemove } =
-        useContext(FilesContext);
+    const {
+        files,
+        error,
+        handleFileChange,
+        handleFileRemove,
+        handleFileColorChange,
+        datas,
+    } = useContext(FilesContext);
 
     return (
         <>
@@ -30,6 +36,16 @@ function Import() {
                                 <button onClick={() => handleFileRemove(index)}>
                                     Remove
                                 </button>
+                                <input
+                                    type="color"
+                                    value={datas?.[index]?.color}
+                                    onChange={(event) =>
+                                        handleFileColorChange(
+                                            index,
+                                            event.target.value
+                                        )
+                                    }
+                                />
                             </li>
                         ))}
                     </ul>

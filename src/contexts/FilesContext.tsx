@@ -7,6 +7,7 @@ const defaultValues = {
     handleFileChange: () => {},
     datas: [],
     handleFileRemove: () => {},
+    handleFileColorChange: () => {},
 };
 
 const FilesContext = createContext<IFilesContext>(defaultValues);
@@ -40,7 +41,11 @@ export const FilesProvider = ({ children }: { children: ReactNode }) => {
                         ) as any[];
                         setDatas((previousDatas) => [
                             ...previousDatas,
-                            { name: file.name, data: jsonData },
+                            {
+                                name: file.name,
+                                color: '#f6b73c',
+                                data: jsonData,
+                            },
                         ]);
                     }
                 };
@@ -59,9 +64,22 @@ export const FilesProvider = ({ children }: { children: ReactNode }) => {
         setDatas(newDatas);
     };
 
+    const handleFileColorChange = (index: number, color: string) => {
+        const newDatas = [...datas];
+        newDatas[index].color = color;
+        setDatas(newDatas);
+    };
+
     return (
         <FilesContext.Provider
-            value={{ files, error, handleFileChange, datas, handleFileRemove }}
+            value={{
+                files,
+                error,
+                handleFileChange,
+                datas,
+                handleFileRemove,
+                handleFileColorChange,
+            }}
         >
             {children}
         </FilesContext.Provider>
